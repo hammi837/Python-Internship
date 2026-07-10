@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}contact{% endblock %}
+
+{% block content %}
+    
+    <!-- Contact Section -->
+    <div class="container my-5">
+        <h2 class="text-center mb-4">Contact Me</h2>
+
+        <form method="POST" class="shadow p-4 rounded bg-light">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label class="form-label">Your Name</label>
+                <input type="text" name="name" class="form-control" required placeholder="Enter your name">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Email Address</label>
+                <input type="email" name="email" class="form-control" required placeholder="you@example.com">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">phone</label>
+                <input type="phone" name="phone" class="form-control" required placeholder="your number">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Message</label>
+                <textarea name="message" rows="5" class="form-control" required placeholder="Write your message here..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Send Message</button>
+        </form>
+
+        {% if success %}
+            <div class="alert alert-success mt-4 text-center">
+                Your message has been sent successfully!
+            </div>
+        {% endif %}
+    </div>
+
+    {% endblock %}
